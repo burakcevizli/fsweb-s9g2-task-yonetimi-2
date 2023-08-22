@@ -1,12 +1,14 @@
 import React from "react";
 import { differenceInDays, formatDistanceToNow } from 'date-fns'
+import trLocale from "date-fns/locale/tr";
+
 
 const Task = ({ taskObj, onComplete }) => {
   const result = differenceInDays(new Date(taskObj.deadline), new Date());
 
   const resultIki = result > 0
     ? `${result} gün sonra !`
-    : `${formatDistanceToNow(new Date(taskObj.deadline), {addSuffix: true})}`;
+    : `${formatDistanceToNow(new Date(taskObj.deadline), {locale: trLocale,})}`;
 
   return (
     <div className="task">
